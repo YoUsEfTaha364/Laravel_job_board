@@ -4,34 +4,68 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-
 class PostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $posts=Post::paginate(10);
 
-    function index(){
-        $posts=post::paginate(10);
-       
         return view("/post/index",["posts"=>$posts,"pagetitle"=>"blog"]);
+        
     }
 
-    function create(){
-         
-        Post::factory(100)->create();
-                  
-                    return redirect('/blog');
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        // show form for creating data
     }
-    
-    function show($id){
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
         $posts=Post::find($id);
 
-        return view("post/show",["posts"=>$posts,"pagetitle"=>"show"]);
+       return view("post/show",["posts"=>$posts,"pagetitle"=>"show"]);
+
     }
 
-    function delete($id){
-       $posts=Post::destroy($id);
-
-       return redirect('/blog');
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //show form with previous data
     }
-    
-    
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+         
+         // show view after delete
+    }
 }

@@ -1,7 +1,7 @@
 <x-layout :title=$pagetitle>
 
-   {{$posts->body}}
+   {{$tag->title}}
    
-    <h1>show page</h1>
+    <h1>show tag page</h1>
 
 </x-layout>  
