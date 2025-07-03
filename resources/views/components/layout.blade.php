@@ -49,6 +49,10 @@
                 contact
               </x-nav_bar>
 
+              <x-nav_bar href="/blog" :active='request()->is("blog")'>
+                Blog
+              </x-nav_bar>
+
 
             </div>
           </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 
 class CommentController extends Controller
@@ -22,16 +23,24 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //  Show the form for creating a new resource.
+        
+        return view("comment/create",["pagetitle"=>"create- comment"]);
 
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
-        //
+        $comment=new comment;
+        $comment->author=$request->author;
+        $comment->content=$request->content;
+        $comment->post_id=$request->post_id;
+
+        $comment->save();
+
+        return redirect("blog/{$request->post_id}");
     }
 
     /**
